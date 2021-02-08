@@ -23,7 +23,7 @@ let startGame = function () {
 
   let getUserNum = function () {
    userNum = +prompt('Введи число!');
-   if (!isNumber(userNum)){
+   if (!isNumber(userNum) || userNum === 0){
      getUserNum();
    } return userNum;
   };
@@ -36,11 +36,9 @@ let startGame = function () {
     
     console.log('Попыток осталось ' + counter);
     
-    if (!isNumber(userNum) || userNum === '') {
-      //userNum = +prompt('Введи число!');
+    if (!isNumber(userNum) || userNum === '' || userNum === 0) {
       getUserNum();
-      //spareNum();
-    } else if (userNum ===0 ||isNaN(userNum)) {
+    } else if (isNaN(userNum)) {
       return alert('Игра окончена');
     }
     
@@ -55,10 +53,10 @@ let startGame = function () {
     console.log('это пользовательское число ' + userNum);
 
     if (userNum < randomNum) {
-      alert('Загаданное число больше ' + userNum + ' остлось попыток ' + counter);
+      alert('Загаданное число больше ' + userNum + ' осталось попыток ' + counter);
       spareNum();
       } else if (userNum > randomNum) {
-        alert('Загаданное число меньше ' + userNum  + ' остлось попыток ' + counter);
+        alert('Загаданное число меньше ' + userNum  + ' осталось попыток ' + counter);
         spareNum(); 
        } else if (userNum === randomNum) {      
         if (confirm('Вы выиграли! хотите сыграть еще?')){
